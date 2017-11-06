@@ -1,0 +1,2 @@
+# ChatOps
+ChatOps is a collaboration model that connects people, tools, process, and automation into a transparent workflow. This flow connects the work needed, the work happening, and the work done in a persistent location staffed by the people, bots, and related tools. The transparency tightens the feedback loop, improves information sharing, and enhances team collaboration. Not to mention team culture and cross-training.
