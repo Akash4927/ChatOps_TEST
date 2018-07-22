@@ -3,19 +3,10 @@ package menu
 import (
 	"fmt"
 	"net/http"
-	"strings"
 )
 
 // Handler function is used to handle the menu requests
 func Handler(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm()       // parse arguments, you have to call this by yourself
-	fmt.Println(r.Form) // print form information in server side
-	fmt.Println("path", r.URL.Path)
-	fmt.Println("scheme", r.URL.Scheme)
-	fmt.Println(r.Form["url_long"])
-	for k, v := range r.Form {
-		fmt.Println("key:", k)
-		fmt.Println("val:", strings.Join(v, ""))
-	}
+	r.ParseForm()                     // parse arguments, you have to call this by yourself
 	fmt.Fprintf(w, "Hello ICH Menu!") // send data to client side
 }

@@ -5,10 +5,11 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/mayadata-io/maya-chatops/chat-go/alerts"
-	"github.com/mayadata-io/maya-chatops/chat-go/interactiveComponent/button"
-	"github.com/mayadata-io/maya-chatops/chat-go/interactiveComponent/menu"
-	"github.com/mayadata-io/maya-chatops/chat-go/slashCommand"
+	"github.com/mayadata-io/chat-go/alerts"
+	"github.com/mayadata-io/chat-go/events"
+	"github.com/mayadata-io/chat-go/interactiveComponent/button"
+	"github.com/mayadata-io/chat-go/interactiveComponent/menu"
+	"github.com/mayadata-io/chat-go/slashCommand"
 )
 
 func main() {
@@ -20,12 +21,13 @@ func main() {
 	})
 
 	// Route for handling Slack requests
-	http.HandleFunc("/slack", slashCommand.Handler)
-	http.HandleFunc("/intButton", button.Handler)
-	http.HandleFunc("/intMenu", menu.Handler)
+	http.HandleFunc("/slash", slashCommand.Handler)
+	http.HandleFunc("/interactiveButton", button.Handler)
+	http.HandleFunc("/interactiveMenu", menu.Handler)
+	http.HandleFunc("/events", events.Handler)
 
 	// Route for handling Alerts
-	http.HandleFunc("/maya-events", alerts.Handler)
+	http.HandleFunc("/alerts", alerts.Handler)
 
 	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {

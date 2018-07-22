@@ -3,19 +3,21 @@ package slashCommand
 import (
 	"fmt"
 	"net/http"
-	"strings"
+
+	"github.com/mayadata-io/chat-go/response"
 )
 
-// Handler function is used to handle the slash commands
+// Handler function will handle slash command request and response
 func Handler(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm()       // parse arguments, you have to call this by yourself
-	fmt.Println(r.Form) // print form information in server side
-	fmt.Println("path", r.URL.Path)
-	fmt.Println("scheme", r.URL.Scheme)
-	fmt.Println(r.Form["url_long"])
-	for k, v := range r.Form {
-		fmt.Println("key:", k)
-		fmt.Println("val:", strings.Join(v, ""))
+	slashCommand, err := ParseSlashCommandRequest(r)
+	if err != nil {
+		w.Header().Set(response.ContentType, response.ApplicationJSON)
+		w.Write(response.MayaErrorMessage)
+		return
 	}
-	fmt.Fprintf(w, "Hello slash commands!") // send data to client side
+
+	fmt.Printf("Slash command received %+v \n", slashCommand)
+
+	w.Header().Set(response.ContentType, response.ApplicationJSON)
+	w.Write(slashCommand.Response())
 }
