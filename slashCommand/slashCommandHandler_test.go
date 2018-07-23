@@ -78,14 +78,23 @@ func TestHandler(t *testing.T) {
 				r: testRequest.ReqWithWrongVerificationToken,
 			},
 			before: func() {
+				SlashCommandValue = os.Getenv(SlashCommandKey)
+				err := os.Setenv(SlashCommandKey, "/test")
+				if err != nil {
+					t.Fatal(err)
+				}
 				VerificationToken = os.Getenv(VerificationTokenKey)
-				err := os.Setenv(VerificationTokenKey, testRequest.TokenValue)
+				err = os.Setenv(VerificationTokenKey, testRequest.TokenValue)
 				if err != nil {
 					t.Fatal(err)
 				}
 			},
 			after: func() {
-				err := os.Setenv(VerificationTokenKey, VerificationToken)
+				err := os.Setenv(SlashCommandKey, SlashCommandValue)
+				if err != nil {
+					t.Fatal(err)
+				}
+				err = os.Setenv(VerificationTokenKey, VerificationToken)
 				if err != nil {
 					t.Fatal(err)
 				}
@@ -98,14 +107,23 @@ func TestHandler(t *testing.T) {
 				r: testRequest.ReqWithHelpText,
 			},
 			before: func() {
+				SlashCommandValue = os.Getenv(SlashCommandKey)
+				err := os.Setenv(SlashCommandKey, "/test")
+				if err != nil {
+					t.Fatal(err)
+				}
 				VerificationToken = os.Getenv(VerificationTokenKey)
-				err := os.Setenv(VerificationTokenKey, testRequest.TokenValue)
+				err = os.Setenv(VerificationTokenKey, testRequest.TokenValue)
 				if err != nil {
 					t.Fatal(err)
 				}
 			},
 			after: func() {
-				err := os.Setenv(VerificationTokenKey, VerificationToken)
+				err := os.Setenv(SlashCommandKey, SlashCommandValue)
+				if err != nil {
+					t.Fatal(err)
+				}
+				err = os.Setenv(VerificationTokenKey, VerificationToken)
 				if err != nil {
 					t.Fatal(err)
 				}
@@ -118,14 +136,23 @@ func TestHandler(t *testing.T) {
 				r: testRequest.ReqWithGetClustersText,
 			},
 			before: func() {
+				SlashCommandValue = os.Getenv(SlashCommandKey)
+				err := os.Setenv(SlashCommandKey, "/test")
+				if err != nil {
+					t.Fatal(err)
+				}
 				VerificationToken = os.Getenv(VerificationTokenKey)
-				err := os.Setenv(VerificationTokenKey, testRequest.TokenValue)
+				err = os.Setenv(VerificationTokenKey, testRequest.TokenValue)
 				if err != nil {
 					t.Fatal(err)
 				}
 			},
 			after: func() {
-				err := os.Setenv(VerificationTokenKey, VerificationToken)
+				err := os.Setenv(SlashCommandKey, SlashCommandValue)
+				if err != nil {
+					t.Fatal(err)
+				}
+				err = os.Setenv(VerificationTokenKey, VerificationToken)
 				if err != nil {
 					t.Fatal(err)
 				}
@@ -138,14 +165,23 @@ func TestHandler(t *testing.T) {
 				r: testRequest.ReqWithGetClusterText,
 			},
 			before: func() {
+				SlashCommandValue = os.Getenv(SlashCommandKey)
+				err := os.Setenv(SlashCommandKey, "/test")
+				if err != nil {
+					t.Fatal(err)
+				}
 				VerificationToken = os.Getenv(VerificationTokenKey)
-				err := os.Setenv(VerificationTokenKey, testRequest.TokenValue)
+				err = os.Setenv(VerificationTokenKey, testRequest.TokenValue)
 				if err != nil {
 					t.Fatal(err)
 				}
 			},
 			after: func() {
-				err := os.Setenv(VerificationTokenKey, VerificationToken)
+				err := os.Setenv(SlashCommandKey, SlashCommandValue)
+				if err != nil {
+					t.Fatal(err)
+				}
+				err = os.Setenv(VerificationTokenKey, VerificationToken)
 				if err != nil {
 					t.Fatal(err)
 				}
